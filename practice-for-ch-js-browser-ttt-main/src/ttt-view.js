@@ -38,21 +38,41 @@ class View {
 
   // }
   
-  handleGameOver(i,j) {
-    // check row 
-    let row = true;
-    let column = true;
-    // let diagonal = true;
+  handleGameOver() {
+    // // check row 
+    // let row = true;
+    // let column = true;
+    // // let diagonal = true;
 
-    const a = document.querySelectorAll("li"); 
-    const v = a[(i*3+j)];
-    for( let k = 0; k<3 ; k++){
-      if( a[i*3+k] !== v) row = false;
+    // const a = document.querySelectorAll("li"); 
+    // const v = a[(i*3+j)];
+    // console.log(v);
+    // for( let k = 0; k<3 ; k++){
+    //   if(  a[i*3+k].innerText !== v.innerText) row = false;
       
-      if( a[k*3+j] !== v) column = false;
+    //   if( a[k*3+j].innerText !== v.innerText) column = false;
+    // }
+
+    // if(row || column) console.log("winner")
+    if(this.game.winner()){
+      const win = document.createElement('h2');
+      win.innerText= `You win, ${this.game.winner()}`
+      this.el.appendChild(win);
+      
+      
+      const a = document.querySelectorAll("li");
+      for(let i=0; i<9; i++){
+      if(a[i].innerText === this.game.winner()) a[i].classList.add("green");
+    }
+    }
+    if(this.game.isOver() && !this.game.winner()){
+      const win = document.createElement('h2');
+      win.innerText= `It s a draw`
+      this.el.appendChild(win);
     }
 
-    if(row || column) console.log("winner")
+    
+
   }
 }
 
