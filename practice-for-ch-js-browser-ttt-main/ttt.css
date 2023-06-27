@@ -1,1 +1,10 @@
 /* Your code here */
+ul {
+    display: flex;
+    width: 150;
+    flex-wrap: wrap;
+}
+
+ul li{
+    width: 45;
+}
